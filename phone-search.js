@@ -53,7 +53,7 @@ const searchData = (data) => {
         const error = document.getElementById('errorDiv')
         error.innerHTML="";//clean Error Message
         cardDiv.innerHTML = "";//clean search Result
-        for(data of data){
+        for(data of data.slice(1,21)){
             brand = data.brand; //mobile brand name
             phoneName = data.phone_name //mobile name
             phoneImg = data.image //mobile image
@@ -71,6 +71,7 @@ const searchData = (data) => {
             cardDiv.appendChild(div)
         }
     }
+    
 }
 //Search Data Function start
 
@@ -89,7 +90,7 @@ const cardDetailsBtn = (data) =>{
         newdiv.classList.add("col-10","mx-auto","col-lg-6")
         newdiv.innerHTML = `
             <div class="card mb-2">
-            <img src="${data.image}" class="card-img-top w-75 mx-auto p-2">
+            <img src="${data.image}" class="card-img-top w-50 mx-auto p-2">
             <div id ="cardBody" class="card-body">
                 <h5 class="card-title">${data.name}</h5>
                 <p class="card-text"><span class="fw-bold">Release Date: </span>${ res = releaseDate(data.releaseDate)} </p>
@@ -146,6 +147,7 @@ const mainFeatures = (datas) =>{
 }
 //catch MainFeatures data function End
 
+//catch otherInfo data function start
 const otherInfo = (datas) =>{
   
     console.log(datas)
@@ -161,6 +163,7 @@ const otherInfo = (datas) =>{
         }
     }
 }
+//catch otherInfo data function End
 
 
 
