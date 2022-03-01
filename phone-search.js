@@ -26,6 +26,8 @@
 document.getElementById('searchBtn').addEventListener('click',function(){
     inputFieldValue = getValue()
     if(inputFieldValue === ''){
+        const showInfo = document.getElementById('showInfo') 
+        showInfo.innerHTML = "";
         cardDiv.innerHTML = ""; //clean search Result
         ErrorMessage('false')
     }else{
@@ -40,6 +42,8 @@ document.getElementById('searchBtn').addEventListener('click',function(){
 //Search Data Function start
 const searchData = (data) => {
     if(data.length == 0){
+        const showInfo = document.getElementById('showInfo') 
+        showInfo.innerHTML = "";
         cardDiv.innerHTML = ""; //clean search Result
         ErrorMessage('true')
     }else{
@@ -78,6 +82,7 @@ const cardDetailsBtn = (data) =>{
     .then(data => getDetailsData(data.data))
     
     const getDetailsData = (data) =>{
+        console.log(data)
         const showInfo = document.getElementById('showInfo') 
         showInfo.innerHTML = "";
         const newdiv = document.createElement('div')
@@ -86,12 +91,13 @@ const cardDetailsBtn = (data) =>{
             <img src="${data.image}" class="card-img-top w-75 mx-auto p-2">
             <div id ="cardBody" class="card-body">
                 <h5 class="card-title">${data.name}</h5>
-                <p class="card-text">${data.brand}</p>
-                <p>Main Features</p>
+                <p class="card-text"><span class="fw-bold">Release Date: </span>${ res = releaseDate(data.releaseDate)} </p>
+                <p class="card-text"><span class="fw-bold">Brand Name: </span>${data.brand}</p>
+                <p class="fw-bold">Main Features</p>
 
                 <ul id ="mainFeatureUl">
                 </ul>
-                <p>Sensor</p>
+                <p class="fw-bold">Sensor</p>
                 <ul id="sensorUl" >
                 </ul>
             </div>
@@ -102,6 +108,14 @@ const cardDetailsBtn = (data) =>{
     }
 }
 //  card button function End
+const releaseDate = (data) =>{
+    console.log(data)
+    if(data.length == 0){
+        return "No Release date"
+    }else{
+        return data
+    } 
+}
 
 //catch sensors data Function start
 const sensors = (datas) => {
