@@ -13,14 +13,65 @@
  }
 //  Error Message Functon End
 
-//Input value Function Start
+//Catch Input value Function Start
  const getValue = ()=> {
     const inputField = document.getElementById('inputBar')
     ipnutValue = inputField.value;
     inputField.value = '';
     return ipnutValue
 }
-// //Input value Function End
+// //Catch Input value Function End
+
+//Catch Release Data function start
+const releaseDate = (data) =>{
+    if(data.length == 0){
+        return "No Release date"
+    }else{
+        return data
+    } 
+}
+//Catch release Data function End
+
+//catch sensors data Function start
+const sensors = (datas) => {
+   const ul = document.getElementById('sensorUl')
+   for(const data of datas){
+    const li = document.createElement('li')
+    li.innerHTML = `${data}`
+    ul.appendChild(li);
+    }
+}
+//catch sensors data Function End
+
+//catch MainFeatures data function start
+const mainFeatures = (datas) =>{
+    
+    const ul = document.getElementById('mainFeatureUl')
+    
+    for(const data in datas){
+        const li = document.createElement('li')
+        li.innerHTML = `${data} : ${datas[data]}`
+        ul.appendChild(li)
+
+    }
+}
+//catch MainFeatures data function End
+
+//catch otherInfo data function start
+const otherInfo = (datas) =>{
+    const ul = document.getElementById('otherUl')
+    if (datas == undefined){
+        return "No Other Info"
+    }else{
+        for(const data in datas){
+            const li = document.createElement('li')
+            li.innerHTML = `${data} : ${datas[data]}`
+            ul.appendChild(li)
+    
+        }
+    }
+}
+//catch otherInfo data function End
 
 // Search Button Function Start
 document.getElementById('searchBtn').addEventListener('click',function(){
@@ -35,6 +86,7 @@ document.getElementById('searchBtn').addEventListener('click',function(){
         fetch(url)
         .then(res => res.json())
         .then(data => searchData(data.data))
+        
     }
 })
 // Search Button Function End
@@ -113,59 +165,3 @@ const cardDetailsBtn = (data) =>{
     }
 }
 //  card button function End
-const releaseDate = (data) =>{
-    if(data.length == 0){
-        return "No Release date"
-    }else{
-        return data
-    } 
-}
-
-//catch sensors data Function start
-const sensors = (datas) => {
-   const ul = document.getElementById('sensorUl')
-   for(const data of datas){
-    const li = document.createElement('li')
-    li.innerHTML = `${data}`
-    ul.appendChild(li);
-    }
-}
-//catch sensors data Function End
-
-//catch MainFeatures data function start
-const mainFeatures = (datas) =>{
-    
-    const ul = document.getElementById('mainFeatureUl')
-    
-    for(const data in datas){
-        const li = document.createElement('li')
-        li.innerHTML = `${data} : ${datas[data]}`
-        ul.appendChild(li)
-
-    }
-}
-//catch MainFeatures data function End
-
-//catch otherInfo data function start
-const otherInfo = (datas) =>{
-    const ul = document.getElementById('otherUl')
-    if (datas == undefined){
-        return "No Other Info"
-    }else{
-        for(const data in datas){
-            const li = document.createElement('li')
-            li.innerHTML = `${data} : ${datas[data]}`
-            ul.appendChild(li)
-    
-        }
-    }
-}
-//catch otherInfo data function End
-
-
-
-
-
-
-
-
