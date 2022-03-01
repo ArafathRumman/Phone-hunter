@@ -37,7 +37,7 @@ document.getElementById('searchBtn').addEventListener('click',function(){
         .then(data => searchData(data.data))
     }
 })
-// Search Button Function Start
+// Search Button Function End
 
 //Search Data Function start
 const searchData = (data) => {
@@ -86,6 +86,7 @@ const cardDetailsBtn = (data) =>{
         const showInfo = document.getElementById('showInfo') 
         showInfo.innerHTML = "";
         const newdiv = document.createElement('div')
+        newdiv.classList.add("col-10","mx-auto","col-lg-6")
         newdiv.innerHTML = `
             <div class="card mb-2">
             <img src="${data.image}" class="card-img-top w-75 mx-auto p-2">
