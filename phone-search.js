@@ -1,4 +1,4 @@
-//  Error Message Functon 
+//  Error Message Functon start
  const ErrorMessage = (parameter) =>{
     const error =document.getElementById('errorDiv')
      if(parameter == 'true'){
@@ -11,9 +11,9 @@
      }
 
  }
+//  Error Message Functon End
 
-
- //Input value Function
+//Input value Function Start
  const getValue = ()=> {
     const inputField = document.getElementById('inputBar')
     ipnutValue = inputField.value;
@@ -22,9 +22,9 @@
     
    
 }
+// //Input value Function End
 
-// Search Button Function
-
+// Search Button Function Start
 document.getElementById('searchBtn').addEventListener('click',function(){
     inputFieldValue = getValue()
     if(inputFieldValue === ''){
@@ -37,7 +37,9 @@ document.getElementById('searchBtn').addEventListener('click',function(){
         .then(data => searchData(data.data))
     }
 })
+// Search Button Function Start
 
+//Search Data Function start
 const searchData = (data) => {
     if(data.length == 0){
         cardDiv.innerHTML = ""; //clean search Result
@@ -76,26 +78,25 @@ const searchData = (data) => {
     }
         
 }
+//Search Data Function start
 
-
-
-//  card button function
+//  card button function start
 const cardDetailsBtn = (data) =>{
     const url = `https://openapi.programming-hero.com/api/phone/${data}`
     fetch(url)
     .then(res => res.json())
     .then(data => getDetailsData(data.data))
-
-
+    
     const getDetailsData = (data) =>{
         const showInfo = document.getElementById('showInfo') 
+        showInfo.innerHTML = '';
         const newdiv = document.createElement('div')
         newdiv.innerHTML = `<div class="card mb-2">
         <img src="${data.image}" class="card-img-top w-75 mx-auto p-2">
         <div id ="cardBody" class="card-body">
           <h5 class="card-title">${data.name}</h5>
           <p class="card-text">${data.brand}</p>
-          <p>MainFeatures</p>
+          <p>Main Features</p>
           <ul id ="mainFeatureUl">
           </ul>
             <p>Sensor</p>
@@ -111,11 +112,9 @@ const cardDetailsBtn = (data) =>{
 
 
 }
+//  card button function End
 
-
-
-
-//catch sensors data Function 
+//catch sensors data Function start
 const sensors = (datas)=>{
    const ul = document.getElementById('sensorUl')
    for(const data of datas){
@@ -124,8 +123,9 @@ const sensors = (datas)=>{
     ul.appendChild(li);
     }
 }
+//catch sensors data Function End
 
-//catch MainFeatures data function
+//catch MainFeatures data function start
 const mainFeatures = (datas) =>{
     const ul = document.getElementById('mainFeatureUl')
     
@@ -136,6 +136,7 @@ const mainFeatures = (datas) =>{
 
     }
 }
+//catch MainFeatures data function End
 
 
 
