@@ -82,7 +82,7 @@ const cardDetailsBtn = (data) =>{
     .then(data => getDetailsData(data.data))
     
     const getDetailsData = (data) =>{
-        console.log(data)
+        console.log(data.others)
         const showInfo = document.getElementById('showInfo') 
         showInfo.innerHTML = "";
         const newdiv = document.createElement('div')
@@ -101,16 +101,19 @@ const cardDetailsBtn = (data) =>{
                 <p class="fw-bold">Sensor</p>
                 <ul id="sensorUl" >
                 </ul>
+                <p class="fw-bold">Other</p>
+                <ul id="otherUl" >
+                </ul>
             </div>
         </div>`
         showInfo.appendChild(newdiv);
         sensors(data.mainFeatures.sensors)
         mainFeatures(data.mainFeatures)
+        otherInfo(data.others)
     }
 }
 //  card button function End
 const releaseDate = (data) =>{
-    console.log(data)
     if(data.length == 0){
         return "No Release date"
     }else{
@@ -131,6 +134,7 @@ const sensors = (datas) => {
 
 //catch MainFeatures data function start
 const mainFeatures = (datas) =>{
+    
     const ul = document.getElementById('mainFeatureUl')
     
     for(const data in datas){
@@ -141,6 +145,22 @@ const mainFeatures = (datas) =>{
     }
 }
 //catch MainFeatures data function End
+
+const otherInfo = (datas) =>{
+  
+    console.log(datas)
+    const ul = document.getElementById('otherUl')
+    if (datas == undefined){
+        return "No Other Info"
+    }else{
+        for(const data in datas){
+            const li = document.createElement('li')
+            li.innerHTML = `${data} : ${datas[data]}`
+            ul.appendChild(li)
+    
+        }
+    }
+}
 
 
 
