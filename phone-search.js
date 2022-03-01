@@ -66,7 +66,7 @@ const searchData = (data) => {
                     <h5 class="card-title">${phoneName}</h5>
                     <p class="card-text">${brand}</p>
                 </div>
-                    <button id="detailsBtn" onclick="cardDetailsBtn('${data.slug}')" class="btn btn btn-success mx-auto px-5 py-2 rounded-0 rounded-bottom w-100 fw-bold">Details</button>
+                    <a href="#" id="detailsBtn" onclick="cardDetailsBtn('${data.slug}')" class="btn btn btn-success mx-auto px-5 py-2 rounded-0 rounded-bottom w-100 fw-bold">Details</a>
                 </div>`
             cardDiv.appendChild(div)
         }
@@ -83,7 +83,6 @@ const cardDetailsBtn = (data) =>{
     .then(data => getDetailsData(data.data))
     
     const getDetailsData = (data) =>{
-        console.log(data.others)
         const showInfo = document.getElementById('showInfo') 
         showInfo.innerHTML = "";
         const newdiv = document.createElement('div')
@@ -149,8 +148,6 @@ const mainFeatures = (datas) =>{
 
 //catch otherInfo data function start
 const otherInfo = (datas) =>{
-  
-    console.log(datas)
     const ul = document.getElementById('otherUl')
     if (datas == undefined){
         return "No Other Info"
