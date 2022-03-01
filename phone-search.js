@@ -150,7 +150,7 @@ const cardDetailsBtn = (data) =>{
 
                 <ul id ="mainFeatureUl">
                 </ul>
-                <p class="fw-bold">Sensor</p>
+                <p class="fw-bold">Sensors</p>
                 <ul id="sensorUl" >
                 </ul>
                 <p class="fw-bold">Other</p>
